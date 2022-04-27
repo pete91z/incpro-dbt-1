@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: stg_person
+    columns: 
+      - name: id
+        tests:
+          - unique
+          - not_null
+
+      - name: ni_number
+        description: '{{doc("ni_format")}}'
+
+      - name: marital_status
+        description: 'A persons marital status'
+        tests:
+          - accepted_values:
+              values:
+                - Married
+                - Widowed
+                - Single
+                - Separated
+                - Divorced
+
+      - name: gender
+        description: '{{doc("gender")}}'
+        tests:
+          - accepted_values:
+              values:
+                - Male
+                - Female
+                - Unspecified
