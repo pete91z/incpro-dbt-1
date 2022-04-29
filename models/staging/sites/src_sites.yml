@@ -1,0 +1,19 @@
+version: 2
+
+sources:
+  - name: sites
+    database: dbreeze
+    schema: spectrum_user
+    tables:
+      - name: sites
+        description: sites Data Lake table
+        loaded_at_field: last_update_date
+        freshness:
+          warn_after: {count: 12, period: hour}
+          error_after: {count: 24, period: hour}
+      - name: sites_extended_attributes
+        description: sites_extended_attributes Data Lake table
+        loaded_at_field: last_update_date
+        freshness:
+          warn_after: {count: 12, period: hour}
+          error_after: {count: 24, period: hour}
