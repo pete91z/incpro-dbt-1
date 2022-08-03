@@ -1,4 +1,4 @@
-/* Variable test - execute as dbt run --select stg_inc --vars "cmd: ('stg_person','stg_ops')" */
+/* Variable test - execute as dbt run --select var_tst --vars "cmd: ('stg_person','stg_ops')" */
 {{
     config(
         enabled=false
