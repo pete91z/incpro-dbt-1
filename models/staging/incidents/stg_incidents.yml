@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: stg_inc_ops_sched
+    columns:
+      - name: log_id
+        tests:
+          - unique
+          - not_null
+
+      - name: sched_status
+        description: '{{doc("sched_status")}}'
+        tests:
+          - accepted_values:
+              values:
+                - C
+                - A
+                - P
