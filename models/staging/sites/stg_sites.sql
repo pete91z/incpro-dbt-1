@@ -2,7 +2,7 @@
     config(
         materialized='incremental',
         post_hook = ["update {{ source('control', 'incr_control') }} set fetch_timestamp= (select ts from (
-select 'a',coalesce(max(last_update_date),getdate()) as ts from {{ this }})) where model_name='{{ this }}'"]
+select 'a',coalesce(max(last_update_date),getdate()) as ts from {{ this }})) where model_name='{{ this.identifier }}'"]
     )
 }}
 
@@ -18,7 +18,7 @@ with sites as (
        substring(postcode,1,2) as postcode_area, lat,long,date_added,last_update_date
 from {{ source('sites', 'sites') }}
 {% if is_incremental() %}
-    where last_update_date::timestamp > (select fetch_timestamp::timestamp from {{ source('control', 'incr_control') }} where model_name='{{ this }}')
+    where last_update_date::timestamp > (select fetch_timestamp::timestamp from {{ source('control', 'incr_control') }} where model_name='{{ this.identifier }}')
 {% endif %}
 )
 
