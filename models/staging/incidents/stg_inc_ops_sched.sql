@@ -15,7 +15,7 @@ operator_id,
 log_id,
 started,
 coalesce(stopped,current_timestamp) as stopped,
-coalesce(stopped,current_timestamp)-started as period_worked,
+cast(cast(coalesce(stopped,current_timestamp)-started as varchar) as bigint)/1000000 as period_worked,
 notes,
 last_update_date
 from {{ source('incidents', 'inc_ops_schedule') }}
