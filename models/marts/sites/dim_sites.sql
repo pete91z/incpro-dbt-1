@@ -1,3 +1,4 @@
+{{config(schema='incidents_mart')}}
 with dim_sites_1 as (/* drive from the stg_sites table */
 with site1 as (
                select site_id,
