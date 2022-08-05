@@ -110,4 +110,4 @@ select site_id,
        site_last_update_date,
        sea_last_update_date,
        earliest_update_date
-from dim_sites_2;
+from dim_sites_2
