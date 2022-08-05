@@ -1,0 +1,19 @@
+version: 2
+
+sources:
+  - name: stg_sites
+    database: dbreeze
+    schema: incidents_stg
+    tables:
+      - name: stg_sites
+        description: sites delta table
+        loaded_at_field: last_update_date
+        freshness:
+          warn_after: {count: 12, period: hour}
+          error_after: {count: 24, period: hour}
+      - name: stg_sites_extended_attributes
+        description: sites_extended_attributes delta table
+        loaded_at_field: last_update_date
+        freshness:
+          warn_after: {count: 12, period: hour}
+          error_after: {count: 24, period: hour}
