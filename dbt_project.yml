@@ -37,4 +37,5 @@ models:
     staging:
       +materialized: view
     marts:
+      +schema: incidents_mart
       +materialized: table
