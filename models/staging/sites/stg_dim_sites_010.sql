@@ -1,3 +1,9 @@
+{{
+    config(
+        materialized='table'
+    )
+}}
+
 with dim_sites_1 as (/* drive from the stg_sites table */
 with site1 as (
                select site_id,
@@ -60,6 +66,9 @@ select sea.*,
 from sea1 sea
 left join {{source('sites','sites')}} si on (sea.site_id=si.site_loc_id))
 
+select sha(site_id||site_name||current_timestamp) as sk_id,
+       *
+from (
 select site_id,
        site_name,
        site_classification,
@@ -111,3 +120,4 @@ select site_id,
        sea_last_update_date,
        earliest_update_date
 from dim_sites_2
+)
