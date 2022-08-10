@@ -23,12 +23,14 @@ sources:
     tables: 
       - name: stg_dim_sites_010
         description: first stage table for dim sites build
+
   - name: stg_sites
     database: dbreeze
     schema: incidents_stg
     tables: 
       - name: stg_dim_sites_020
         description: first stage table for dim sites build
+        
   - name: mart_sites
     database: dbreeze
     schema: incidents_mart
