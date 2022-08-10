@@ -31,7 +31,7 @@ select si.*,
        sea.victuals as food_and_drink,
        sea.maintenance as site_under_maintenance,
        sea.last_update_date as sea_last_update_date,
-       least(si.site_last_update_date,sea.last_update_date) as earliest_update_date
+       si.site_last_update_date as last_update_date
 from 
 site1 si
 left join {{source('sites','sites_extended_attributes')}} sea on (si.site_id=sea.property_id)),
@@ -62,10 +62,11 @@ select sea.*,
        si.long,
        si.date_added,
        last_update_date as site_last_update_date,
-       least(sea_last_update_date,si.last_update_date) as earliest_update_date
+       sea_last_update_date as last_update_date
 from sea1 sea
-left join {{source('sites','sites')}} si on (sea.site_id=si.site_loc_id))
+left join {{source('sites','sites')}} si on (sea.site_id=si.site_loc_id)),
 
+dim_sites_3 as (/* generate sk */
 select sha(site_id||site_name||current_timestamp) as sk_id,
        *
 from (
@@ -92,7 +93,7 @@ select site_id,
        site_under_maintenance,
        site_last_update_date,
        sea_last_update_date,
-       earliest_update_date
+       last_update_date
 from dim_sites_1
 union
 select site_id,
@@ -118,6 +119,31 @@ select site_id,
        site_under_maintenance,
        site_last_update_date,
        sea_last_update_date,
-       earliest_update_date
+       last_update_date
 from dim_sites_2
 )
+)
+
+SELECT a.*,
+       rank() over (partition by site_id,
+       site_name,
+       site_classification,
+       postcode,
+       postcode_outcode,
+       postcode_incode,
+       sector,
+       unit,
+       postcode_area,
+       lat,
+       long,
+       site_date_added,
+       site_status,
+       standard_parking,
+       blue_badge_parking,
+       site_capacity,
+       wc,
+       accessible_wc,
+       shop,
+       food_and_drink,
+       site_under_maintenance order by last_update_date asc) as order_rank 
+from dim_sites_3 a

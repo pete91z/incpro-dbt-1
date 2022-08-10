@@ -8,4 +8,4 @@ with dq_dim_sites_010 as (
     where sk_id is null
 )
 
-select a.*,load_id(current_timestamp) from dq_dim_sites_010 a
+select *,{{ load_id('current_timestamp') }} as load_id from dq_dim_sites_010
