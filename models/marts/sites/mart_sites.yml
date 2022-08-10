@@ -1,0 +1,23 @@
+version: 2
+
+models:
+  - name: dim_sites
+    columns: 
+      - name: sk_id
+        tests:
+          - unique
+          - not_null
+      - name: bk_id
+        tests:
+          - not_null
+      - name: valid_from
+        tests:
+          - not_null
+      - name: valid_to
+          - not_null
+      - name: current_ind
+          - not_null
+      - name: bk_id,valid_from
+          - unique
+          - not null
+    

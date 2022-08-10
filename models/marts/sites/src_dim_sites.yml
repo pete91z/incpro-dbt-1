@@ -11,6 +11,12 @@ sources:
         freshness:
           warn_after: {count: 12, period: hour}
           error_after: {count: 24, period: hour}
+      - name: stg_dim_sites_030
+        description: dim_sites penultimate staging table
+        loaded_at_field: last_update_date
+        freshness:
+          warn_after: {count: 12, period: hour}
+          error_after: {count: 24, period: hour}
       - name: stg_sites_extended_attributes
         description: sites_extended_attributes delta table
         loaded_at_field: last_update_date
