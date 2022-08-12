@@ -18,7 +18,7 @@ with site1 as (
                long,
                date_added,
                last_update_date as site_last_update_date
-               from {{source('stg_sites','stg_sites')}}
+               from {{ref('stg_sites')}}
               )
 select si.*,
        decode(sea.status,'O','Open','C','Closed','Error') as site_status,
@@ -49,7 +49,7 @@ select site_id,
        food_and_drink,
        site_under_maintenance,
        last_update_date as sea_last_update_date
-from {{source('stg_sites','stg_sites_extended_attributes')}})
+from {{ref('stg_sites_extended_attributes')}})
 select sea.*,
        si.site_name,si.site_desc as site_classification,
        coalesce(postcode,'UNKNOWN') as postcode,

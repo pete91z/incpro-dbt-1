@@ -30,7 +30,7 @@ with stg_dim_sites_1 as (/* de-dupe and remove null sk entries */
            last_update_date,
            last_update_date as valid_from,
            1 as load_status 
-    from {{ source('stg_sites','stg_dim_sites_010')}}
+    from {{ ref('stg_dim_sites_010')}}
     where sk_id is not null and order_rank=1
 ),
 

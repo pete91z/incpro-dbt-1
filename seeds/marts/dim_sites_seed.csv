@@ -1,0 +1,2 @@
+sk_id,bk_id,site_name,site_classification,postcode,postcode_outcode,postcode_incode,sector,unit,postcode_area,lat,long,site_date_added,site_status,standard_parking,blue_badge_parking,site_capacity,wc,accessible_wc,shop,food_and_drink,site_under_maintenance,last_update_date,valid_from,valid_to,current_ind
+-1,-1,'Unknown','Unknown','UNKNOWN','U','U','U','U','U',0,0,'2000-01-01','Closed','U','U',0,'U','U','U','Unknown','U','2000-01-01 00:00:00','2000-01-01 00:00:00','2999-12-31 23:59:59',1

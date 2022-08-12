@@ -1,4 +1,4 @@
-{{ config(materialized='table') 
+{{ config(materialized='incremental') 
 }}
 
 with dim_sites_val_010 as (
@@ -45,7 +45,7 @@ select sk_id,
        lag(valid_from) over (partition by bk_id order by valid_from asc) as prev_valid_from,
        lead(valid_from) over (partition by bk_id order by valid_from asc) as next_valid_from,
        load_status
-from {{ref('stg_dim_sites_020')}} 
+from {{source('control_dq','stg_dim_sites_020')}} 
 order by bk_id,valid_from),
 dim_sites_val_020 as (
 select *,
@@ -94,6 +94,7 @@ select sk_id,
        last_update_date,
        valid_from,
        cast(coalesce(lead(valid_from) over (partition by bk_id order by valid_from),'3000-12-31 23:59:59') as timestamp) valid_to,
-       case when cast(coalesce(lead(valid_from) over (partition by bk_id order by valid_from),'3000-12-31 23:59:59') as timestamp)=cast('3000-12-31 23:59:59' as timestamp) then 1 else 0 end as current_ind
+       case when cast(coalesce(lead(valid_from) over (partition by bk_id order by valid_from),'3000-12-31 23:59:59') as timestamp)=cast('3000-12-31 23:59:59' as timestamp) then 1 else 0 end as current_ind,
+       {{ load_id('current_timestamp') }} as load_id
 from dim_sites_val_030
-where load_status=0 or (load_status=1 and prev_check>0 and next_check>0)
+where load_status=1 and prev_check=0 and next_check=0
