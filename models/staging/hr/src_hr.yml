@@ -17,3 +17,5 @@ sources:
     tables:
       - name: incr_control
         description: Control the incremental fetch timestamp
+      - name: incr_daily
+        description: accumulate daily incremental before pushing to master.
