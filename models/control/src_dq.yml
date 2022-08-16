@@ -9,3 +9,9 @@ sources:
         description: staging table for dim_sites
       - name: stg_dim_sites_020
         description: secondary table, use to capture new rows that have no changes but were pushed into this table
+  - name: stg_dq
+    database: dbreeze
+    schema: dwcontrol
+    tables:
+      - name: incr_daily
+        description: daily delta log table, merged back into the master table (incr_control) at the end of an elt run.

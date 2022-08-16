@@ -1,8 +1,7 @@
 {{
     config(
         materialized='incremental',
-        post_hook = ["update {{ source('control', 'incr_control') }} set fetch_timestamp= (select ts from (
-select 'a',coalesce(max(last_update_date),getdate()) as ts from {{ this }})) where model_name='{{ this.identifier }}'"]
+        post_hook = ["insert into {{source('control','incr_daily')}} (select '{{ this.identifier }}', max(last_update_date) ,null,'T',{{var('run_id')}} from {{this}})"]
     )
 }}
 
