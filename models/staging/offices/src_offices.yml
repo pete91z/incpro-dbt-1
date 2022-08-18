@@ -1,0 +1,25 @@
+version: 2
+
+sources:
+  - name: src_ofc
+    database: dbreeze
+    schema: spectrum_user
+    tables:
+      - name: hq_locations
+        description: office location table
+        loaded_at_field: last_update_date
+        freshness:
+          warn_after: {count: 12, period: hour}
+          error_after: {count: 24, period: hour}
+  - name: mart_office
+    database: dbreeze
+    schema: incidents_mart
+    tables: 
+      - name: dim_office
+        description: office dimension table
+  - name: stg_office
+    database: dbreeze
+    schema: incidents_stg
+    tables:
+      - name: stg_dim_office_010
+        description: first staging table for office dimension

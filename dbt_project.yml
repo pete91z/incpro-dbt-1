@@ -39,3 +39,6 @@ models:
     marts:
       +schema: incidents_mart
       +materialized: table
+    control:
+      +schema: dwcontrol
+      +materialized: table

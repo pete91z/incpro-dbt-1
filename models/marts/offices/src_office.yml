@@ -1,0 +1,19 @@
+version: 2
+
+sources:
+  - name: stg_office
+    database: dbreeze
+    schema: incidents_stg
+    tables:
+      - name: stg_offices
+        description: offices delta table
+        loaded_at_field: last_update_date
+        freshness:
+          warn_after: {count: 12, period: hour}
+          error_after: {count: 24, period: hour}
+      - name: stg_dim_office_030
+        description: dim_office penultimate staging table
+        loaded_at_field: last_update_date
+        freshness:
+          warn_after: {count: 12, period: hour}
+          error_after: {count: 24, period: hour}
