@@ -16,6 +16,6 @@ select {{column_name}} from {{ source('control','incr_control') }}
 
 {{ return(results_list[0]) }}
 
-{% do log(results_list[0], info=True) %}
+{% do log("completed", info=True) %}
 
 {% endmacro %}
