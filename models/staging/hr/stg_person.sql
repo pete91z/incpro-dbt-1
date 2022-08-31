@@ -1,6 +1,8 @@
+{% set prior_val = get_last_increment('fetch_timestamp','{{this.indentifier}}') %}
+
 {{
     config(
-        post_hook = ["insert into {{source('control','incr_daily')}} (select '{{ this.identifier }}', max(last_update_date) ,null,'T',{{var('run_id')}} from {{this}})"],
+        post_hook = ["insert into {{source('control','incr_daily')}} (select * from (select '{{ this.identifier }}', max(last_update_date) as last_update_date ,cast(null as int),'T',{{var('run_id')}} from {{this}}) where last_update_date is not null)"],
         materialized='incremental'
     )
 }}
