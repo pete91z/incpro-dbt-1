@@ -11,3 +11,9 @@ sources:
         freshness:
           warn_after: {count: 12, period: hour}
           error_after: {count: 24, period: hour}
+      - name: incidents_incoming
+        description: Incoming incidents (those that have passed location check and have been assigned to an OP)
+        loaded_at_field: last_update_date
+        freshness:
+          warn_after: {count: 12, period: hour}
+          error_after: {count: 24, period: hour}

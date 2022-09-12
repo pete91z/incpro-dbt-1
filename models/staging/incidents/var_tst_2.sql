@@ -1,5 +1,5 @@
+{{ config(enabled=False)}}
+
 {% set results = get_last_increment('fetch_timestamp','stg_person') %}
 
-{{config(post_hook = ["select {{results}}"])}}
-
-select {{results}},1
+select cast('{{results}}' as timestamp) as ts,1 as val
