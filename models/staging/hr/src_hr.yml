@@ -2,8 +2,8 @@ version: 2
 
 sources:
   - name: hr
-    database: dbreeze
-    schema: spectrum_user
+    database: dev
+    schema: spectrum_schema
     tables:
       - name: person
         description: person Data Lake table (from the HR database)
@@ -12,7 +12,7 @@ sources:
           warn_after: {count: 12, period: hour}
           error_after: {count: 24, period: hour}
   - name: control
-    database: dbreeze
+    database: dev
     schema: dwcontrol
     tables:
       - name: incr_control

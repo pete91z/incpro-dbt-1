@@ -2,8 +2,8 @@ version: 2
 
 sources:
   - name: incidents
-    database: dbreeze
-    schema: spectrum_user
+    database: dev
+    schema: spectrum_schema
     tables:
       - name: inc_ops_schedule
         description: Incident scheduling data

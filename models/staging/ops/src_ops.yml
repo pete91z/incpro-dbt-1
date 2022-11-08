@@ -2,11 +2,17 @@ version: 2
 
 sources:
   - name: ops
-    database: dbreeze
-    schema: spectrum_user
+    database: dev
+    schema: spectrum_schema
     tables:
       - name: operators
         description: operators Data Lake table
+        loaded_at_field: last_update_date
+        freshness:
+          warn_after: {count: 12, period: hour}
+          error_after: {count: 24, period: hour}
+      - name: role
+        description: role Data Lake table
         loaded_at_field: last_update_date
         freshness:
           warn_after: {count: 12, period: hour}

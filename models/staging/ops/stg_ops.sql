@@ -13,4 +13,6 @@ from {{ source('ops', 'operators') }}
 {% endif %}
 )
 
-select * from ops
+select a.*,b.role_description from ops a
+join {{source('ops','role')}} b 
+on a.position=b.role_id

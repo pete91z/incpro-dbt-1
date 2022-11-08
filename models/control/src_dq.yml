@@ -2,7 +2,7 @@ version: 2
 
 sources: 
   - name: control_dq
-    database: dbreeze
+    database: dbrdeveeze
     schema: incidents_stg
     tables:
       - name: stg_dim_sites_010
@@ -10,7 +10,7 @@ sources:
       - name: stg_dim_sites_020
         description: secondary table, use to capture new rows that have no changes but were pushed into this table
   - name: stg_dq
-    database: dbreeze
+    database: dev
     schema: dwcontrol
     tables:
       - name: incr_daily

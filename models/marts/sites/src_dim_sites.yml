@@ -2,7 +2,7 @@ version: 2
 
 sources:
   - name: stg_sites
-    database: dbreeze
+    database: dev
     schema: incidents_stg
     tables:
       - name: stg_sites
