@@ -2,7 +2,7 @@ version: 2
 
 sources: 
   - name: control_dq
-    database: dbrdeveeze
+    database: dev
     schema: incidents_stg
     tables:
       - name: stg_dim_sites_010

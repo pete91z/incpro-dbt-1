@@ -10,8 +10,8 @@ with stg_ofc as (
            location_name,
            location_code,
            location_description,
-           lat,
-           long,
+           location_lat,
+           location_long,
            last_update_date
     from {{source('src_ofc','hq_locations')}}
     {% if is_incremental() %}
