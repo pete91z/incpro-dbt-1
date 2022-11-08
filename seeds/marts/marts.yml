@@ -4,5 +4,5 @@ seeds:
   - name: dim_sites_seed
     config:
       enabled: true
-      database: dbreeze
+      database: dev
       schema: incidents_mart
