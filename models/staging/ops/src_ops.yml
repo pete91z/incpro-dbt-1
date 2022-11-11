@@ -17,3 +17,21 @@ sources:
         freshness:
           warn_after: {count: 12, period: hour}
           error_after: {count: 24, period: hour}
+      - name: hq_locations
+        description: hq_locations Data Lake table
+        loaded_at_field: last_update_date
+        freshness:
+          warn_after: {count: 12, period: hour}
+          error_after: {count: 24, period: hour}
+      - name: person
+        description: person Data Lake table
+        loaded_at_field: last_update_date
+        freshness:
+          warn_after: {count: 12, period: hour}
+          error_after: {count: 24, period: hour}
+      - name: org_unit
+        description: org_unit Data Lake table
+        loaded_at_field: last_update_date
+        freshness:
+          warn_after: {count: 12, period: hour}
+          error_after: {count: 24, period: hour}
