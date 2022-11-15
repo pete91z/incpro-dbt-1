@@ -6,3 +6,8 @@ seeds:
       enabled: true
       database: dev
       schema: incidents_mart
+  - name: operator_status
+    config:
+      enabled: true
+      database: dev
+      schema: incidents_mart

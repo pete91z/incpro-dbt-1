@@ -12,14 +12,42 @@ from {{ source('ops', 'operators') }}
     where last_update_date::timestamp > (select fetch_timestamp::timestamp from {{ source('control', 'incr_control') }} where model_name='{{ this.identifier }}')
 {% endif %}
 )
+,
+op_role as (
+select * from (
+select a.*,row_number() over (partition by operator_id order by dept_match_score desc) as rn from (
+select ops.operator_id,
+ops.operator_name,
+ops.position,
+ops.status,
+ops.startdate,
+ops.email,
+ops.phone,
+ops.base,
+ops.last_update_date,
+ro.role_description,
+hq.location_name,
+ou.unit_name as dept,
+ou.manager_id,
+fuzzy_match(ro.role_description,ou.unit_name) as dept_match_score
+from ops
+join {{source('ops','role')}} ro on (ops.position=ro.role_id)
+join {{source('ops','hq_locations')}} hq on (ops.base=hq.location_code)
+join {{source('ops','org_unit')}} ou on (hq.location_id=ou.hq_id)
+) a ) where rn=1)
 
-select op.*,
-       ro.role_description,  
+select oro.operator_id,
+       oro.operator_name,
+       oro.position,
+       oro.status,
+       oro.startdate,
+       oro.email,
+       oro.phone,
+       oro.base,
+       oro.last_update_date,
+       oro.role_description,  
        pe.first_names||' '||pe.last_name as manager_name,
-       ou.unit_name as department,
-       hq.location_name
-from ops op
-left join {{source('ops','role')}} ro on (op.position=ro.role_id)
-left join {{source('ops','hq_locations')}} hq on (op.base=hq.location_code)
-left join {{source('ops','org_unit')}} ou on (lower(substring(ro.role_description,1,4))=lower(substring(ou.unit_name,1,4))) and (hq.location_id=ou.hq_id)
-left join {{source('ops','person')}} pe on (ou.manager_id=pe.id)
+       oro.dept as department,
+       oro.location_name
+from op_role oro
+left join {{source('ops','person')}} pe on (oro.manager_id=pe.id)
