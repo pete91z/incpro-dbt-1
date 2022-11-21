@@ -1,5 +1,5 @@
 ops_status_id,status_name,status_description,last_update_date
--1,'N/A','Use when a status has not been set','2022-11-15 00:00:00'
-1,'ACTIVE','Operator is active and in service','2022-11-15 00:00:00'
-2,'INACTIVE','Operator is in service but not available','2022-11-15 00:00:00'
-3,'LEAVE','Operator is not in service','2022-11-15 00:00:00'
+-1,"N/A","Use when a status has not been set","2022-11-15 00:00:00"
+1,"ACTIVE","Operator is active and in service","2022-11-15 00:00:00"
+2,"INACTIVE","Operator is in service but not available","2022-11-15 00:00:00"
+3,"LEAVE","Operator is not in service","2022-11-15 00:00:00"

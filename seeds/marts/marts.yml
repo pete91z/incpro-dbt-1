@@ -11,3 +11,12 @@ seeds:
       enabled: true
       database: dev
       schema: incidents_mart
+      column_types: {op_status_id: int, status_name: varchar(100), status_description: varchar(200), last_update_date: timestamp}
+    columns:
+      - name: op_status_id
+      - name: status_name
+        quote: true
+      - name: status_description
+        quote: true
+      - name: last_update_date
+        quote: true
