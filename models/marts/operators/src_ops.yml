@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: stg_ops
+    database: dev
+    schema: incidents_stg
+    tables:
+      - name: stg_ops
+        description: offices delta table
+      - name: stg_dim_ops_030
+        description: dim_operators penultimate staging table

@@ -1,6 +1,19 @@
 version: 2
 
 sources:
+  - name: mart_ops
+    database: dev
+    schema: incidents_mart
+    tables:
+      - name: dim_operators
+        description: operators dimension table
+      - name: operator_status
+        description: operators status lookup
+  - name: stg_ops
+    database: dev
+    schema: incidents_stg
+    tables:
+      - name: stg_dim_ops_010
   - name: ops
     database: dev
     schema: spectrum_schema
