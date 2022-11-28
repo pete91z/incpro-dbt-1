@@ -17,3 +17,11 @@ sources:
         freshness:
           warn_after: {count: 12, period: hour}
           error_after: {count: 24, period: hour}
+  - name: inc_fact_build
+    database: dev
+    schema: incidents_stg
+    tables:
+      - name: stg_incident_ops_schedule_vw
+        description: current plus late inc_ops_schedule rows
+      - name: stg_incidents_incoming_vw
+        description: current plus late incidents_incoming rows 
