@@ -25,3 +25,7 @@ sources:
         description: current plus late inc_ops_schedule rows
       - name: stg_incidents_incoming_vw
         description: current plus late incidents_incoming rows 
+      - name: stg_inc_ops_sched_late
+        description: late/early inc_ops_sched data (e.g. no corresponding incoming incidents entry)
+      - name: stg_incidents_incoming_late
+        description: late/early incidents_incoming data (e.g. no corresponding inc_ops_sched entry) 
