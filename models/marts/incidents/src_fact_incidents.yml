@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: stg_f_inc
+    database: dev
+    schema: incidents_stg
+    tables:
+      - name: stg_incidents_incoming
+        description: incoming incidents delta table
+      - name: stg_inc_ops_sched
+        description: inc_ops_sched delta staging table
