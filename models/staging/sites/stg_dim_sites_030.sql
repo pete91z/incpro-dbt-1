@@ -93,7 +93,7 @@ select sk_id,
        food_and_drink,
        site_under_maintenance,
        last_update_date,
-       case when rn then cast('1900-01-01 00:00:00' as timestamp) else last_update_date end valid_from,
+       case when rn=1 then cast('1900-01-01 00:00:00' as timestamp) else last_update_date end valid_from,
        cast(coalesce(lead(valid_from) over (partition by bk_id order by valid_from),'3000-12-31 23:59:59') as timestamp) valid_to,
        case when cast(coalesce(lead(valid_from) over (partition by bk_id order by valid_from),'3000-12-31 23:59:59') as timestamp)=cast('3000-12-31 23:59:59' as timestamp) then 1 else 0 end as current_ind
 from dim_sites_val_030
