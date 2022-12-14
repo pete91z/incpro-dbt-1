@@ -24,7 +24,7 @@ with inc_joined_010 as (
            idf.inc_keyword_3,
            idf.risklevel,
            idf.incident_type,
-           idf.status,
+           idf.sched_status as status,
            idf.assigned_date,
            si.valid_from as si_valid_from,
            si.valid_to as si_valid_to
