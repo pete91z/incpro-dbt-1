@@ -2,7 +2,6 @@ version: 2
 
 sources:
   - name: incidents
-    database: dev
     schema: spectrum_schema
     tables:
       - name: inc_ops_schedule
@@ -18,7 +17,6 @@ sources:
           warn_after: {count: 12, period: hour}
           error_after: {count: 24, period: hour}
   - name: inc_fact_build
-    database: dev
     schema: incidents_stg
     tables:
       - name: stg_incident_ops_schedule_vw

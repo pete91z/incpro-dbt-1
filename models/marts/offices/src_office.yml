@@ -2,7 +2,6 @@ version: 2
 
 sources:
   - name: stg_office
-    database: dev
     schema: incidents_stg
     tables:
       - name: stg_offices

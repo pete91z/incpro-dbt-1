@@ -4,12 +4,10 @@ seeds:
   - name: dim_sites_seed
     config:
       enabled: true
-      database: dev
       schema: incidents_mart
   - name: operator_status
     config:
       enabled: true
-      database: dev
       schema: incidents_mart
       column_types: {op_status_id: int, status_name: varchar(100), status_description: varchar(200), last_update_date: timestamp}
     columns:

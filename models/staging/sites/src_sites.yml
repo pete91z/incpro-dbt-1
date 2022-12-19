@@ -2,7 +2,6 @@ version: 2
 
 sources:
   - name: sites
-    database: dev
     schema: spectrum_schema
     tables:
       - name: sites
@@ -18,7 +17,6 @@ sources:
           warn_after: {count: 12, period: hour}
           error_after: {count: 24, period: hour}
   - name: stg_sites
-    database: dev
     schema: incidents_stg
     tables: 
       - name: stg_dim_sites_010
@@ -27,7 +25,6 @@ sources:
         description: first stage table for dim sites build
 
   - name: mart_sites
-    database: dev
     schema: incidents_mart
     tables: 
       - name: dim_sites

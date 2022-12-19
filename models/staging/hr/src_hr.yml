@@ -2,7 +2,6 @@ version: 2
 
 sources:
   - name: hr
-    database: dev
     schema: spectrum_schema
     tables:
       - name: person
@@ -12,7 +11,6 @@ sources:
           warn_after: {count: 12, period: hour}
           error_after: {count: 24, period: hour}
   - name: control
-    database: dev
     schema: dwcontrol
     tables:
       - name: incr_control
