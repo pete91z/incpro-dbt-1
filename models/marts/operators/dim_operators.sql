@@ -1,5 +1,5 @@
 {{ config(materialized='incremental',unique_key='sk_id',
-   post_hook = ["delete from {{source('stg_ops','stg_ops')}}" ]
+   post_hook = ["delete from {{source('stg_ops','stg_ops')}}", "delete from {{source('stg_ops','stg_person')}}" ]
 )
 }}
 with dim_ops_final as (

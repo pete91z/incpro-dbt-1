@@ -5,6 +5,8 @@ sources:
     schema: incidents_stg
     tables:
       - name: stg_ops
-        description: offices delta table
+        description: operator delta table
       - name: stg_dim_ops_030
         description: dim_operators penultimate staging table
+      - name: stg_person
+        description: person delta table
