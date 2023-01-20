@@ -21,6 +21,7 @@ select log_id,
        risklevel,
        incident_type,
        status,
-       assigned_date
+       assigned_date,
+       current_timestamp as load_ts
 from {{ref('stg_incidents_dtl_fact_020')}}
 
