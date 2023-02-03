@@ -1,0 +1,7 @@
+incident_type_id,incident_name,incident_description,assigned_sla,resolution_sla,notes,last_update_date
+-1,"Unknown","Incident severity is unknown",0,0,"","2023-01-26 00:00:00"
+1,"Severity 1","Highest category incident, requires immediate attention and resolution within 12 hours",7200,43200,"","2023-01-26 00:00:00"
+2,"Severity 2","Major incident, requires urgent attention and resolution after 24 hours",7200,86400,"","2023-01-26 00:00:00"
+3,"Severity 3","Serious incident, but does not incurr financial or external dammage. Requires triage within 4 hours and resolution after 48 hours",14400,172800,"","2023-01-26 00:00:00"
+4,"Severity 4","Minor incident, requires triage within 4 hours and resolution after 1 week",14400,568800,"","2023-01-26 00:00:00"
+5,"Severity 5","Low level incident, observation or query. Triage within 8 hours and resolution after 1 month",28800,2419200,"","2023-01-26 00:00:00"

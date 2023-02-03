@@ -18,3 +18,20 @@ seeds:
         quote: true
       - name: last_update_date
         quote: true
+  - name: incident_type_lookup
+    config:
+      enabled: true
+      schema: incidents_mart
+      column_types: {incident_type_id: int, incident_name: varchar(100), incident_description: varchar(200), assigned_sla: int, resolution_sla: int, notes: varchar(1000), last_update_date: timestamp}
+    columns:
+      - name: incident_type_id
+      - name: incident_name
+        quote: true
+      - name: incident_description
+        quote: true
+      - name: assigned_sla
+      - name: resolution_sla
+      - name: notes
+        quote: true
+      - name: last_update_date
+        quote: true
