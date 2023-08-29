@@ -1,4 +1,4 @@
-{{ config(materialized='incremental',unique_key='raise_date',dist='raise_date',sort='raise_date') }}
+{{ config(materialized='incremental',unique_key='raise_date',dist='raise_date',sort='raise_date', tags =["smry","marts"]) }}
 {% set areas = ["assets", "structural", "facilities","utilities","environment"] %}
 
 with area_count as (

@@ -1,5 +1,6 @@
 {{ config(materialized='incremental',unique_key='sk_id',
-   post_hook = ["delete from {{source('stg_office','stg_offices')}}" ]
+   post_hook = ["delete from {{source('stg_office','stg_offices')}}" ],
+   tags = ["dim","marts"]
 )
 }}
 with dim_office_final as (

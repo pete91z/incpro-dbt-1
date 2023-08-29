@@ -1,5 +1,6 @@
 {{ config(materialized='incremental',unique_key='sk_id',
-   post_hook = ["delete from {{source('stg_sites','stg_sites')}}","delete from {{source('stg_sites','stg_sites_extended_attributes')}}" ]
+   post_hook = ["delete from {{source('stg_sites','stg_sites')}}","delete from {{source('stg_sites','stg_sites_extended_attributes')}}" ],
+   tags =["dim","mart"]
 )
 }}
 with dim_sites_final as (
