@@ -1,5 +1,6 @@
 {{ config(materialized='incremental',unique_key='log_id',dist='inc_raised_sk_id', sort_type='interleaved',sort=['incident_type,','inc_keyword_1'],
-   post_hook = ["delete from {{source('stg_f_inc','stg_incidents_incoming')}}","delete from {{source('stg_f_inc','stg_inc_ops_sched')}}" ]
+   post_hook = ["delete from {{source('stg_f_inc','stg_incidents_incoming')}}","delete from {{source('stg_f_inc','stg_inc_ops_sched')}}" ],
+   tags = ["fact","marts"]
 )
 }}
 

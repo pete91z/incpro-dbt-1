@@ -1,2 +1,25 @@
 version: 2
 
+models:
+  - name: fact_incidents_dtl 
+    columns:
+      - name: operator_sk_id
+        tests:
+          - not_null
+          - less_than_zero
+      - name: inc_raised_sk_id
+        tests:
+          - not_null
+          - less_than_zero
+      - name: inc_assigned_sk_id
+        tests:
+          - not_null
+          - less_than_zero
+      - name: site_sk_id
+        tests:
+          - not_null
+          - less_than_zero
+      - name: office_sk_id
+        tests:
+          - not_null
+          - less_than_zero
